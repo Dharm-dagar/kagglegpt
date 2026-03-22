@@ -3,6 +3,7 @@
 // ============================================================
 
 import { THEME } from "../config.js"
+import { HistoryIcon, DatasetIcon, NotebookIcon, CompetitionIcon } from "./Icons.jsx"
 const C = THEME.colors
 
 export function HistorySidebar({ history, onSelect, currentIdea }) {
@@ -19,13 +20,10 @@ export function HistorySidebar({ history, onSelect, currentIdea }) {
       scrollbarWidth: "thin",
       scrollbarColor: `${C.border} transparent`,
     }}>
-      <p style={{
-        color: C.textMuted, fontSize: "10px",
-        fontFamily: THEME.fonts.mono, letterSpacing: "1.5px",
-        margin: "0 0 10px", textTransform: "uppercase",
-      }}>
-        Search History
-      </p>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '10px' }}>
+        <HistoryIcon size={12} color={C.textMuted} />
+        <p style={{ color: C.textMuted, fontSize: '10px', fontFamily: THEME.fonts.mono, letterSpacing: '1.5px', margin: 0, textTransform: 'uppercase' }}>Search History</p>
+      </div>
 
       <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
         {history.map((h, i) => {
@@ -87,17 +85,17 @@ export function HistorySidebar({ history, onSelect, currentIdea }) {
               <div style={{ display: "flex", gap: "4px", flexWrap: "wrap" }}>
                 {h.datasetCount > 0 && (
                   <span style={{ background: `${C.datasetColor}15`, color: C.datasetColor, borderRadius: "4px", padding: "1px 6px", fontSize: "9px", fontFamily: THEME.fonts.mono }}>
-                    📦 {h.datasetCount}
+                    {h.datasetCount} ds
                   </span>
                 )}
                 {h.notebookCount > 0 && (
                   <span style={{ background: `${C.notebookColor}15`, color: C.notebookColor, borderRadius: "4px", padding: "1px 6px", fontSize: "9px", fontFamily: THEME.fonts.mono }}>
-                    📓 {h.notebookCount}
+                    {h.notebookCount} nb
                   </span>
                 )}
                 {h.competitionCount > 0 && (
                   <span style={{ background: `${C.competitionColor}15`, color: C.competitionColor, borderRadius: "4px", padding: "1px 6px", fontSize: "9px", fontFamily: THEME.fonts.mono }}>
-                    🏆 {h.competitionCount}
+                    {h.competitionCount} cp
                   </span>
                 )}
               </div>

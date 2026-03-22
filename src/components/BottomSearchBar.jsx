@@ -4,6 +4,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import { CONFIG, THEME } from "../config.js"
+import { SparkleIcon, SendIcon, SpinnerIcon, SearchIcon } from "./Icons.jsx"
 const C = THEME.colors
 
 export function BottomSearchBar({ idea, onSearch, isLoading }) {
@@ -107,7 +108,7 @@ export function BottomSearchBar({ idea, onSearch, isLoading }) {
             onMouseEnter={e => { e.currentTarget.style.borderColor = C.primary }}
             onMouseLeave={e => { if (!showChips) e.currentTarget.style.borderColor = C.border }}
           >
-            ✨
+            <SparkleIcon size={18} color={showChips ? C.primary : C.textSecondary} />
           </button>
 
           {/* Input box */}
@@ -156,8 +157,8 @@ export function BottomSearchBar({ idea, onSearch, isLoading }) {
             onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = "none" }}
           >
             {isLoading
-              ? <span style={{ color: C.textMuted, animation: "spin 1s linear infinite", display: "inline-block" }}>⟳</span>
-              : <span style={{ color: input.trim() ? C.bg : C.textMuted }}>↑</span>
+              ? <SpinnerIcon size={16} color={C.textMuted} />
+              : <SendIcon size={16} color={input.trim() ? C.bg : C.textMuted} />
             }
           </button>
         </div>

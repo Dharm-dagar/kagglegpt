@@ -3,6 +3,7 @@
 // ============================================================
 
 import { THEME } from "../config.js"
+import { KaggleLogo, HomeIcon } from "./Icons.jsx"
 const C = THEME.colors
 
 export function SearchHeader({ onHome, isLoading, totalResults, idea }) {
@@ -26,7 +27,7 @@ export function SearchHeader({ onHome, isLoading, totalResults, idea }) {
         display: "flex", alignItems: "center", gap: "8px",
         cursor: "pointer", padding: 0,
       }}>
-        <span style={{ fontSize: "18px" }}>📦</span>
+        <KaggleLogo size={20} color={C.primary} />
         <span style={{ color: C.primary, fontSize: "16px", fontWeight: "700", fontFamily: THEME.fonts.mono }}>
           Kaggle<span style={{ color: C.textPrimary }}>GPT</span>
         </span>

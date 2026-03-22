@@ -59,7 +59,7 @@ export const THEME = {
     primaryDim: "#1a9fd4",
     primaryGlow: "#20BDFF18",
 
-    accent: "#A29BFE",        // purple accent
+    accent: "#00D4AA",        // teal accent
     green: "#00E676",         // success / good match
     amber: "#FFB300",         // warning
     red: "#FF5252",           // skip / danger
@@ -73,7 +73,7 @@ export const THEME = {
 
     kaggleBlue: "#20BDFF",
     datasetColor: "#20BDFF",
-    notebookColor: "#A29BFE",
+    notebookColor: "#00D4AA",
     competitionColor: "#FFB300",
   },
 }

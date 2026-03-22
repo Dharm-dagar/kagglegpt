@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { THEME } from "../config.js"
+import { DatasetIcon, NotebookIcon, CompetitionIcon, AIIcon, TipIcon, ExternalIcon } from "./Icons.jsx"
 const C = THEME.colors
 
 const VERDICT = {
@@ -172,7 +173,7 @@ function Card({ type, item, ranking, accentColor, icon, url }) {
               {new Date(item.deadline) > new Date() ? "🟢 Active" : "🔴 Ended"}
             </Tag>
           )}
-          <span style={{ marginLeft: "auto", color: hovered ? accentColor : C.textMuted, fontSize: "14px", transition: "all 0.2s", transform: hovered ? "translate(2px, -2px)" : "none" }}>↗</span>
+          <span style={{ marginLeft: "auto", transition: "all 0.2s", transform: hovered ? "translate(2px, -2px)" : "none" }}><ExternalIcon size={13} color={hovered ? accentColor : C.textMuted} /></span>
         </div>
       </div>
     </a>
@@ -245,7 +246,7 @@ function FeaturedCard({ type, item, ranking, accentColor, icon, url }) {
               {item.totalVotes != null && <Tag color={C.primary}>▲ {item.totalVotes} votes</Tag>}
               {item.usabilityRating != null && <Tag color={C.green}>⭐ {(item.usabilityRating * 10).toFixed(0)}% usability</Tag>}
             </>}
-            <span style={{ marginLeft: "auto", color: hovered ? accentColor : C.textMuted, fontSize: "14px", transition: "all 0.2s", transform: hovered ? "translate(2px,-2px)" : "none" }}>↗</span>
+            <span style={{ marginLeft: "auto", transition: "all 0.2s", transform: hovered ? "translate(2px,-2px)" : "none" }}><ExternalIcon size={13} color={hovered ? accentColor : C.textMuted} /></span>
           </div>
         </div>
       </div>
@@ -253,7 +254,7 @@ function FeaturedCard({ type, item, ranking, accentColor, icon, url }) {
   )
 }
 
-function Section({ icon, title, count, color, items, type, rankings, urlFn }) {
+function Section({ icon, title, count, color, items, type, rankings, urlFn }) { /* icon is now JSX */
   // Sort by verdict: Perfect fit first
   const verdictOrder = { "Perfect fit": 0, "Good match": 1, "Worth checking": 2, "Skip": 3 }
   const sorted = [...items].sort((a, b) => {
@@ -360,7 +361,7 @@ export function ResultsGrid({ datasets, notebooks, competitions, rankings, activ
             background: `${C.primary}15`, border: `1px solid ${C.primary}30`,
             display: "flex", alignItems: "center", justifyContent: "center",
             fontSize: "22px", flexShrink: 0,
-          }}>🤖</div>
+          }}><AIIcon size={22} color={C.primary} /></div>
           <div>
             <p style={{ color: C.primary, fontSize: "10px", fontFamily: THEME.fonts.mono, margin: "0 0 6px", letterSpacing: "1.5px" }}>
               AI RECOMMENDATION
@@ -385,7 +386,7 @@ export function ResultsGrid({ datasets, notebooks, competitions, rankings, activ
             background: `${C.accent}15`, flexShrink: 0,
             display: "flex", alignItems: "center", justifyContent: "center",
             fontSize: "20px",
-          }}>💡</div>
+          }}><TipIcon size={22} color={C.accent} /></div>
           <div>
             <p style={{ color: C.accent, fontSize: "10px", fontFamily: THEME.fonts.mono, margin: "0 0 5px", letterSpacing: "1.5px" }}>PROJECT TIPS</p>
             <p style={{ color: C.textSecondary, fontSize: "13px", margin: 0, lineHeight: 1.7 }}>{queryMeta.tips}</p>
@@ -395,7 +396,7 @@ export function ResultsGrid({ datasets, notebooks, competitions, rankings, activ
 
       {showDatasets && datasets.length > 0 && (
         <Section
-          icon="📦" title="Datasets" count={datasets.length}
+          icon={<DatasetIcon size={16} color={C.datasetColor} />} title="Datasets" count={datasets.length}
           color={C.datasetColor} items={datasets} type="dataset"
           rankings={rankings}
           urlFn={d => `https://www.kaggle.com/datasets/${d.ref}`}
@@ -404,7 +405,7 @@ export function ResultsGrid({ datasets, notebooks, competitions, rankings, activ
 
       {showNotebooks && notebooks.length > 0 && (
         <Section
-          icon="📓" title="Notebooks" count={notebooks.length}
+          icon={<NotebookIcon size={16} color={C.notebookColor} />} title="Notebooks" count={notebooks.length}
           color={C.notebookColor} items={notebooks} type="notebook"
           rankings={rankings}
           urlFn={n => `https://www.kaggle.com/${n.ref}`}
@@ -413,7 +414,7 @@ export function ResultsGrid({ datasets, notebooks, competitions, rankings, activ
 
       {showCompetitions && competitions.length > 0 && (
         <Section
-          icon="🏆" title="Competitions" count={competitions.length}
+          icon={<CompetitionIcon size={16} color={C.competitionColor} />} title="Competitions" count={competitions.length}
           color={C.competitionColor} items={competitions} type="competition"
           rankings={rankings}
           urlFn={c => `https://www.kaggle.com/c/${c.ref || c.id}`}
